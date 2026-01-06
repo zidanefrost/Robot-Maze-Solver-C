@@ -1,2 +1,45 @@
-# Robot-Maze-Solver-C
-A C-based robot simulation that uses Breadth-First Search (BFS) to navigate randomly generated arenas, collect markers, and return to a home tile.
+# Robot Maze Solver
+
+A robot maze-solving program written in C that navigates a randomly generated arena to collect markers and return them to a home tile. The simulation is graphically represented using a Java-based drawing application.
+
+## Overview
+[cite_start]The program generates a unique, irregularly shaped arena for every execution[cite: 1, 102]. The robot (represented by a green triangle) must:
+1.  [cite_start]Identify all markers (grey tiles) within the grid[cite: 77, 95].
+2.  [cite_start]Calculate the shortest path to each marker using a Breadth-First Search (BFS) algorithm.
+3.  [cite_start]Navigate around obstacles (black tiles) and walls (red boundaries)[cite: 54, 64].
+4.  [cite_start]Pick up all markers and safely deliver them to the home tile (blue tile)[cite: 1, 99].
+
+## Project Structure
+* [cite_start]`main.c`: Coordinates the high-level logic for pathfinding and movement.
+* [cite_start]`robot.c` / `robot.h`: Implements core robot actions like `forward()`, `left()`, `right()`, and marker interactions[cite: 1, 68].
+* [cite_start]`arena.c` / `arena.h`: Manages random grid generation, obstacle placement, and the rendering of the environment[cite: 1, 102].
+* [cite_start]`graphics.h` / `graphics.c`: Interface for the Java `drawapp-4.0.jar` visualization tool[cite: 1, 184].
+
+## Features
+* [cite_start]**Dynamic Grid Generation**: Arenas vary in size from 10x10 to 15x15 tiles[cite: 1, 91].
+* [cite_start]**Pathfinding**: Implements BFS to ensure the robot finds the most efficient route to its targets.
+* [cite_start]**Layered Rendering**: Uses foreground and background layers to animate the robot without redrawing the entire static arena[cite: 59, 62].
+* [cite_start]**Resilient Navigation**: Designed to avoid getting stuck in infinite loops even with complex obstacle placement[cite: 96].
+
+## Getting Started
+
+### Prerequisites
+* [cite_start]**C Compiler**: GCC or Clang[cite: 184, 187].
+* [cite_start]**Java Runtime**: Required to run `drawapp-4.0.jar` for the graphical display[cite: 1, 198].
+
+### Compilation
+To compile the program, run the following command in your terminal:
+```bash
+gcc -o maze_solver main.c arena.c robot.c graphics.c
+```
+
+### Execution
+Execution
+Run the compiled program and pipe the output to the Java drawing application:
+```bash
+./maze_solver | java -jar drawapp-4.0.jar
+```
+
+## Acknowledgements
+Developed as part of the COMP0002 Principles of Programming coursework at UCL.
+Pathfinding skeleton code assisted by ChatGPT and subsequently modified/refined independently.
